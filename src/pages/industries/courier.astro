@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+const modules = [
+  ['truck', 'Dispatch from plain English', 'Tell Neo “pickup at the lab at 2, deliver to the clinic” and it creates and assigns the job in Shipday, with your order numbering.'],
+  ['bolt', 'Late-delivery monitor', 'Watches every active delivery and alerts you before a late job becomes an angry customer.'],
+  ['check', 'Proof of delivery', 'Emails the customer a delivery report with photos as soon as the driver completes the stop.'],
+  ['calendar', 'Weekly routes', 'Builds your recurring route orders for the week automatically.'],
+  ['chart', 'Payroll sheet', 'Builds the weekly driver settlement sheet from cash collected, on request or every Monday.'],
+  ['phone', 'Front desk', 'Receptionist, missed-call text-back and instant lead follow-up, with quotes from your own rate sheet.'],
+];
+---
+<Base title="AI dispatch and receptionist for courier companies" description="Neo runs dispatch, late-delivery alerts, proof of delivery, routes and payroll for courier and medical delivery companies, and answers every call and lead.">
+  <div class="page-head">
+    <div class="badge"><span class="dot"></span>Courier and medical delivery · <span class="tag live" style="margin:0">Live</span></div>
+    <h1>Your dispatcher, receptionist and back office, in one</h1>
+    <p>Neo was built inside a Maryland medical courier and runs it every day. If you move packages, specimens or prescriptions, it already speaks your language.</p>
+    <div class="ctas" style="margin-top:2rem"><a href="/book?industry=Courier" class="btn-primary">Book a consultation</a><a href="/case-studies/rgt-drivers" class="btn-secondary">Read the case study</a></div>
+  </div>
+  <section class="alt">
+    <div class="container">
+      <h2 class="section-title">What Neo handles for a courier</h2>
+      <div class="grid">
+        {modules.map(([icon, t, p]) => <div class="card"><div class="icon-tile"><Icon name={icon} /></div><h3>{t}</h3><p>{p}</p></div>)}
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container narrow">
+      <p class="section-label">Medical privacy</p>
+      <h2 class="section-title">No patient details in texts. Ever.</h2>
+      <p class="muted" style="font-size:1.02rem">Texts carry pickup and delivery times and order numbers only. Anything more sensitive stays in email and your dispatch system. Rush and STAT jobs are never held up waiting for approvals.</p>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="container"><h2>Run your courier company from your phone</h2><p>We’ll show you Neo on a live dispatch in your consultation.</p><div class="ctas"><a href="/book?industry=Courier" class="btn-primary">Book a consultation</a></div></div>
+  </section>
+</Base>

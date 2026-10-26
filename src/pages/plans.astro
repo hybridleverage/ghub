@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+const plans = [
+  { name: 'Front Desk', for: 'For owners who miss calls and leads.', featured: false, items: [
+    'AI phone receptionist', 'Missed-call text-back', 'Instant lead follow-up (days 1, 3 and 7)', 'Knowledge base from your prices and policies',
+    'Approval mode on Telegram', 'Review engine, morning briefing and reports (as they launch)'] },
+  { name: 'Front Desk + Booking', for: 'For appointment-based businesses: law firms, clinics, salons.', featured: true, items: [
+    'Everything in Front Desk', 'Booking straight onto your Google Calendar', 'Reschedules and cancellations by phone or text', 'Day-before reminder texts to cut no-shows'] },
+  { name: 'Full Operations', for: 'For teams that run their daily operations through Neo.', featured: false, items: [
+    'Everything in Front Desk + Booking', 'Industry modules such as dispatch, late-delivery alerts, proof of delivery and payroll', 'Quotes, invoices and payment links',
+    'Web chat, Spanish, intake forms and e-signature', 'Marketing: content calendar, local SEO, newsletter, reactivation', 'Priority support'] },
+];
+---
+<Base title="Plans" description="Three Neo plans by what they include: Front Desk, Front Desk + Booking, and Full Operations. Done-for-you setup on every plan. Quoted after a short consultation.">
+  <div class="page-head">
+    <div class="badge"><span class="dot"></span>Plans</div>
+    <h1>Pick the staff you need</h1>
+    <p>Every plan includes a one-time, done-for-you setup: your phone number, knowledge base, texting registration and Telegram. We quote after a 30-minute consultation so the plan fits your call volume and tools.</p>
+  </div>
+  <section style="padding-top:1rem">
+    <div class="container plans">
+      {plans.map((p) => (
+        <div class={`plan${p.featured ? ' featured' : ''}`}>
+          {p.featured && <span class="ribbon">Most popular for appointments</span>}
+          <h3>{p.name}</h3>
+          <p class="for">{p.for}</p>
+          <ul class="checks">{p.items.map((i) => <li>{i}</li>)}</ul>
+          <a href={`/book?plan=${encodeURIComponent(p.name)}`} class="btn-primary">Book a consultation</a>
+        </div>
+      ))}
+    </div>
+    <p class="muted center" style="margin-top:1.6rem">Some modules are still rolling out; we’ll tell you exactly what’s live on your start date. Ad spend, if you use the ad builder, is always paid by you directly.</p>
+  </section>
+  <section class="alt">
+    <div class="container narrow faq">
+      <h2 class="section-title">Questions about plans</h2>
+      <details><summary>Is there a contract?</summary><p>We’ll walk you through the terms in your consultation, including how to change plans or cancel.</p></details>
+      <details><summary>Are there usage limits?</summary><p>Plans include generous monthly call minutes and texts for a typical small business. If you regularly need more, we’ll suggest the plan that fits rather than surprise you.</p></details>
+      <details><summary>Can I start small and add modules later?</summary><p>Yes. Most businesses start with Front Desk and add booking or operations modules once they see Neo working.</p></details>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+
+type M = { name: string; text: string; live: boolean };
+const groups: { title: string; icon: string; intro: string; items: M[] }[] = [
+  { title: 'Front desk', icon: 'phone', intro: 'Every caller and every lead gets an answer, day or night.', items: [
+    { name: 'AI receptionist', text: 'Answers calls in a natural voice, takes the details, answers common questions and transfers to you when a caller needs a person.', live: true },
+    { name: 'Missed-call text-back', text: 'Texts an unanswered caller within a minute and books them by text.', live: true },
+    { name: 'Instant lead follow-up', text: 'Replies to website forms and emailed leads in under a minute, then follows up on days 1, 3 and 7 until they book or ask to stop.', live: true },
+    { name: 'Knowledge base', text: 'Answers from your own price list, FAQ and policies, in a file you can edit from Telegram.', live: true },
+    { name: 'Web chat', text: 'The same Neo as a chat bubble on your website.', live: false },
+    { name: 'Spanish', text: 'Calls and texts in the caller’s language, Spanish first.', live: false },
+  ]},
+  { title: 'Scheduling', icon: 'calendar', intro: 'Appointments booked straight onto your calendar.', items: [
+    { name: 'Calendar booking', text: 'Offers open times from your Google Calendar, books the one the caller picks, and handles reschedules and cancellations.', live: false },
+    { name: 'Reminders', text: 'A text the day before to cut no-shows, only to customers who agreed to texts.', live: false },
+  ]},
+  { title: 'Owner tools', icon: 'send', intro: 'Run the business from a chat on your phone.', items: [
+    { name: 'Telegram control center', text: 'Every call, text and lead is copied to you. Ask for a report or give Neo a job in plain English.', live: true },
+    { name: 'Approval mode', text: 'Anything public, costly or in bulk waits for your one-tap approval.', live: true },
+    { name: 'Morning briefing', text: 'Today’s jobs, yesterday’s money and what needs attention, at 7 AM.', live: false },
+    { name: 'Weekly numbers', text: 'Calls, leads, jobs and revenue compared with last week.', live: false },
+    { name: 'Monthly value report', text: 'What Neo handled for you, with an estimated dollar value.', live: false },
+  ]},
+  { title: 'Growth', icon: 'star', intro: 'More reviews, better visibility, customers who come back.', items: [
+    { name: 'Google Business Profile builder', text: 'Sets up and fills out your Google listing.', live: true },
+    { name: 'Review engine', text: 'Asks happy customers for a Google review and routes unhappy ones to you.', live: false },
+    { name: 'Local SEO upkeep, newsletter and reactivation', text: 'Regular posts, a monthly email, and check-ins with past customers who are due again. Every post is approved by you first.', live: false },
+  ]},
+  { title: 'Operations and industry modules', icon: 'truck', intro: 'The back office for businesses that dispatch, deliver or bill.', items: [
+    { name: 'Dispatch from plain English', text: 'Creates and assigns delivery jobs in Shipday from a sentence.', live: true },
+    { name: 'Late-delivery monitor', text: 'Watches deliveries and alerts you when a job is running late.', live: true },
+    { name: 'Proof of delivery', text: 'Emails delivery reports with photos to the customer automatically.', live: true },
+    { name: 'Weekly routes and payroll', text: 'Builds recurring route orders and the weekly driver settlement sheet.', live: true },
+    { name: 'Email reader and sender', text: 'Reads incoming email, sorts real leads from vendors and spam, and sends replies and reports.', live: true },
+    { name: 'Quotes, invoices and payment links', text: 'Builds quotes, sends payment links and chases unpaid invoices.', live: false },
+    { name: 'Intake forms and e-signature', text: 'Structured intake questionnaires and signed agreements.', live: false },
+  ]},
+];
+---
+<Base title="How Neo works" description="Every Neo module, from the AI receptionist and missed-call text-back to approval mode, dispatch and payroll, marked live or coming soon.">
+  <div class="page-head">
+    <div class="badge"><span class="dot"></span>How Neo works</div>
+    <h1>One assistant for your phone, your leads and your back office</h1>
+    <p>Neo is installed for you on your own server and connected to your phone number, website, email and Telegram. Each module below is marked <span class="tag live">Live</span> or <span class="tag soon">Coming soon</span>, so you know exactly what you’re getting today.</p>
+  </div>
+
+  {groups.map((g, i) => (
+    <section class={i % 2 === 0 ? 'alt' : ''}>
+      <div class="container">
+        <div style="display:flex;gap:1rem;align-items:center;margin-bottom:.4rem"><div class="icon-tile" style="margin:0"><Icon name={g.icon} /></div><h2 class="section-title" style="margin:0">{g.title}</h2></div>
+        <p class="section-sub" style="margin-top:.6rem">{g.intro}</p>
+        <div class="grid">
+          {g.items.map((m) => (
+            <div class="card"><h3>{m.name}<span class={`tag ${m.live ? 'live' : 'soon'}`}>{m.live ? 'Live' : 'Soon'}</span></h3><p>{m.text}</p></div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="alt2">
+    <div class="container grid-2">
+      <div>
+        <p class="section-label">Privacy and compliance</p>
+        <h2 class="section-title">Built to be trusted with your customers</h2>
+      </div>
+      <ul class="checks">
+        <li><strong>Private install:</strong> your own server, phone number and database. Nothing is shared between clients.</li>
+        <li><strong>Carrier registration done for you:</strong> we file the business-texting registration carriers require.</li>
+        <li><strong>Consent and opt-outs:</strong> STOP and HELP are honored on every text, and marketing texts only go to people who opted in.</li>
+        <li><strong>Industry guardrails:</strong> no patient details in texts for medical clients; never legal advice for law firms.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <h2>Which modules would your business use?</h2>
+      <p>We’ll map it out with you in a 30-minute consultation.</p>
+      <div class="ctas"><a href="/book" class="btn-primary">Book a consultation</a><a href="/plans" class="btn-secondary">See the plans</a></div>
+    </div>
+  </section>
+</Base>

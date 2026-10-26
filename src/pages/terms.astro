@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="Terms of Service" description="Terms for using the Brightview Agency website and contacting our AI assistant.">
+  <div class="page-head"><h1>Terms of Service</h1><p>Last updated: October 26, 2026</p></div>
+  <section style="padding-top:1rem">
+    <article class="prose">
+      <p>These terms cover your use of this website and our phone and text line. Services we provide to clients are governed by a separate written agreement.</p>
+
+      <h2>Our AI assistant</h2>
+      <p>Calls and texts to our line are answered by Neo, an AI assistant. Neo can make mistakes. Nothing it says is a binding offer, a price quote or professional advice until confirmed in writing by {SITE.name}.</p>
+
+      <h2>Using this site</h2>
+      <p>You agree not to misuse the site or our line, including sending unlawful, abusive or automated messages, or attempting to disrupt our systems.</p>
+
+      <h2>Text messages</h2>
+      <p>Text messaging is covered by our <a href="/sms-terms">SMS Terms</a>.</p>
+
+      <h2>No warranties</h2>
+      <p>The site and its content are provided “as is”, without warranties of any kind, to the extent the law allows.</p>
+
+      <h2>Limitation of liability</h2>
+      <p>To the extent the law allows, {SITE.name} is not liable for indirect or consequential damages arising from your use of this site or our line.</p>
+
+      <h2>Changes and governing law</h2>
+      <p>We may update these terms; the date above shows the latest version. These terms are governed by the laws of the State of Maryland.</p>
+
+      <h2>Contact</h2>
+      <p>Call or text <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>, or use our <a href="/book">contact form</a>.</p>
+    </article>
+  </section>
+</Base>

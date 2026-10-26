@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../consts';
+---
+<Base title="Book a consultation" description="Book a free 30-minute consultation to see what Neo would handle in your business, or call Neo now to hear it for yourself.">
+  <section class="page-head" style="padding-bottom:1rem">
+    <div class="badge"><span class="dot"></span>Book a consultation</div>
+    <h1>See what Neo would handle in your business</h1>
+  </section>
+  <section style="padding-top:1.5rem">
+    <div class="container book-wrap">
+      <div>
+        <h2 class="section-title" style="font-size:1.6rem">What happens next</h2>
+        <ul class="checks" style="margin-bottom:2rem">
+          <li><strong>We get your request right away</strong> and reach out to set a time for a free 30-minute consultation.</li>
+          <li><strong>We map your calls, leads and paperwork</strong> and show you which Neo modules fit.</li>
+          <li><strong>You get a clear quote.</strong> No pressure, no obligation.</li>
+        </ul>
+        <div class="card">
+          <div class="icon-tile"><Icon name="phone" /></div>
+          <h3>Rather talk now?</h3>
+          <p>Call or text Neo at <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>. It answers day or night, and it’s the best demo of what your customers would get.</p>
+        </div>
+      </div>
+      <form class="lead-form" action={SITE.formAction} method="POST">
+        <input type="hidden" name="_subject" value="New Brightview consultation request" />
+        <input type="hidden" name="_next" value={SITE.url + '/thanks'} />
+        <input type="hidden" name="plan" id="plan-field" value="" />
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-row">
+          <div class="form-group"><label for="name">Full name</label><input id="name" name="name" required autocomplete="name" /></div>
+          <div class="form-group"><label for="company">Business name</label><input id="company" name="company" autocomplete="organization" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="email">Email</label><input id="email" type="email" name="email" required autocomplete="email" /></div>
+          <div class="form-group"><label for="phone">Mobile phone</label><input id="phone" type="tel" name="phone" autocomplete="tel" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="industry">Industry</label>
+            <select id="industry" name="industry">
+              <option value="">Choose one</option>
+              <option>Courier</option><option>Law firm</option><option>Home services</option>
+              <option>Salon</option><option>Clinic</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="calls">Calls per week (roughly)</label>
+            <select id="calls" name="call_volume">
+              <option value="">Not sure</option><option>Under 25</option><option>25 to 100</option><option>100 to 300</option><option>Over 300</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label for="challenge">What eats most of your time right now?</label>
+          <textarea id="challenge" name="challenge" placeholder="Missed calls, chasing leads, dispatching, scheduling, paperwork…"></textarea></div>
+        <label class="consent">
+          <input type="checkbox" name="sms_consent" value="yes" />
+          <span>Text me about this request. I agree to receive SMS messages from {SITE.name} at the number above about my consultation. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of service. See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy">Privacy Policy</a>.</span>
+        </label>
+        <button type="submit" class="btn-primary form-submit">Request my consultation</button>
+        <p class="form-note">We never share your information. No spam.</p>
+      </form>
+    </div>
+  </section>
+  <script is:inline>
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var plan = q.get('plan'), ind = q.get('industry');
+      if (plan) document.getElementById('plan-field').value = plan;
+      if (ind) { var s = document.getElementById('industry'); for (var i = 0; i < s.options.length; i++) if (s.options[i].text === ind) s.selectedIndex = i; }
+    })();
+  </script>
+</Base>
