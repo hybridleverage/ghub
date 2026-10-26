@@ -1,0 +1,99 @@
+---
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import { SITE, NAV } from '../consts';
+
+interface Props { title: string; description: string; schema?: object }
+const { title, description, schema } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const canonical = SITE.url + (path === '/' ? '/' : path);
+const fullTitle = path === '/' ? title : `${title} | ${SITE.name}`;
+const org = {
+  '@context': 'https://schema.org', '@type': 'ProfessionalService', name: SITE.name, url: SITE.url,
+  telephone: SITE.phoneTel, areaServed: SITE.serviceArea,
+  description: 'Brightview installs and runs Neo, an AI operations assistant for small businesses: phone receptionist, missed-call text-back, instant lead follow-up and more.',
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={SITE.url + '/og.png'} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#050d1a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(schema ?? org)} />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="Brightview Agency home"><span>Bright</span>view Agency</a>
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          {NAV.map((n) => <li><a href={n.href} aria-current={path === n.href || path.startsWith(n.href + '/') ? 'page' : undefined}>{n.label}</a></li>)}
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-phone" href={`tel:${SITE.phoneTel}`} aria-label={`Call Neo at ${SITE.phone}`}><Icon name="phone" size={18} /><span>{SITE.phone}</span></a>
+        <a href="/book" class="nav-cta">Book a consultation</a>
+        <details class="menu">
+          <summary>Menu</summary>
+          <div class="menu-panel">
+            {NAV.map((n) => <a href={n.href}>{n.label}</a>)}
+            <a href="/about">About</a>
+            <a href="/book">Book a consultation</a>
+            <a href={`tel:${SITE.phoneTel}`}>Call Neo: {SITE.phone}</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <main id="main"><slot /></main>
+
+  <footer class="site-footer">
+    <div class="foot">
+      <div>
+        <a href="/" class="logo"><span>Bright</span>view Agency</a>
+        <p>We install and run Neo, the AI operations staff your business can’t afford to hire.</p>
+        <p>Call or text Neo: <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></p>
+        <p>{SITE.serviceArea}</p>
+      </div>
+      <div>
+        <h4>Neo</h4>
+        <ul>
+          <li><a href="/neo">How Neo works</a></li>
+          <li><a href="/plans">Plans</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li><a href="/case-studies/rgt-drivers">RGT Drivers case study</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/book">Book a consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© {SITE.year} {SITE.name}. All rights reserved.</span>
+      <span><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a> · <a href="/sms-terms">SMS Terms</a></span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+const flow = [
+  ['phone', 'Answers every call', 'A calm, discreet virtual receptionist that says up front it isn’t an attorney and can’t give legal advice.'],
+  ['user', 'Takes intake, one question at a time', 'Name, callback number, practice area, a short summary, upcoming deadlines, and the other parties’ names for your conflict check.'],
+  ['bolt', 'Flags urgent matters', 'Sale dates, garnishments, levies, court dates: you’re alerted right away, with the date.'],
+  ['calendar', 'Books the consultation', 'Offers open times from your Google Calendar and books the one the caller picks, marked “review the conflict check first.”'],
+  ['send', 'Briefs you on Telegram', 'Every new consultation, with the conflict-check names, the moment it’s booked.'],
+  ['message', 'Reminds the client', 'A day-before reminder text with the time only, never case details, to clients who agreed to texts.'],
+];
+---
+<Base title="AI receptionist and consultation booking for law firms" description="A virtual receptionist for law firms: intake and conflict-check names, urgent-matter alerts and consultation booking on your calendar. Never gives legal advice.">
+  <div class="page-head">
+    <div class="badge"><span class="dot"></span>Law firms · <span class="tag soon" style="margin:0">Early access</span></div>
+    <h1>Never miss a potential client, and never risk a word of legal advice</h1>
+    <p>Neo answers your phones, does the intake your firm needs, and books consultations onto your calendar. Now onboarding our first firms.</p>
+    <div class="ctas" style="margin-top:2rem"><a href="/book?industry=Law%20firm" class="btn-primary">Join early access</a></div>
+  </div>
+  <section class="alt">
+    <div class="container">
+      <h2 class="section-title">What a call looks like</h2>
+      <div class="grid">
+        {flow.map(([icon, t, p]) => <div class="card"><div class="icon-tile"><Icon name={icon} /></div><h3>{t}</h3><p>{p}</p></div>)}
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container narrow">
+      <p class="section-label">Guardrails</p>
+      <h2 class="section-title">Built for confidentiality</h2>
+      <ul class="checks">
+        <li><strong>Never legal advice.</strong> No opinions on what to do, whether someone qualifies, or what a court will do.</li>
+        <li><strong>Never confirms who is a client.</strong> Requests about other people get a polite confidentiality answer.</li>
+        <li><strong>Collects only what you need.</strong> No Social Security numbers, account numbers or documents over the phone.</li>
+        <li><strong>Creditors and opposing counsel</strong> get a message taken, not an intake.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="container"><h2>Want Neo answering for your firm?</h2><p>Early-access firms get the template set up for their practice areas.</p><div class="ctas"><a href="/book?industry=Law%20firm" class="btn-primary">Join early access</a></div></div>
+  </section>
+</Base>

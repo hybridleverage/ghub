@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="Thanks, we got your request" description="Your consultation request is in. Here’s what happens next.">
+  <section class="page-head" style="padding-bottom:5rem">
+    <div class="badge"><span class="dot"></span>Request received</div>
+    <h1>Thanks, we got it</h1>
+    <p>We’ll be in touch shortly to set a time for your consultation. Can’t wait? Call or text Neo at <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>.</p>
+    <div class="ctas" style="margin-top:2rem"><a href="/neo" class="btn-secondary">Explore how Neo works</a></div>
+  </section>
+</Base>

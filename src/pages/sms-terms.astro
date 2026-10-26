@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="SMS Terms" description="Terms for text messages from Brightview Agency: what we send, how often, and how to opt out with STOP or get help with HELP.">
+  <div class="page-head"><h1>SMS Terms</h1><p>Last updated: October 26, 2026</p></div>
+  <section style="padding-top:1rem">
+    <article class="prose">
+      <h2>Program description</h2>
+      <p>{SITE.name} sends text messages to people who contact us or request a consultation and agree to receive texts. Messages are about your request: confirmations, scheduling, reminders and replies to your questions. We do not send marketing messages without separate, explicit consent.</p>
+
+      <h2>How you opt in</h2>
+      <p>By checking the SMS consent box on our website form, or by texting our number first, you agree to receive text messages from {SITE.name} at the number you provided. Consent is not a condition of any purchase or service.</p>
+
+      <h2>Frequency and cost</h2>
+      <p>Message frequency varies with your request. Message and data rates may apply.</p>
+
+      <h2>Opting out and help</h2>
+      <p>Reply <strong>STOP</strong> at any time to stop receiving messages; you’ll get one confirmation and no further texts. Reply <strong>HELP</strong> for help, or call <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>.</p>
+
+      <h2>Carriers</h2>
+      <p>Carriers are not liable for delayed or undelivered messages.</p>
+
+      <h2>Privacy</h2>
+      <p>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. See our <a href="/privacy">Privacy Policy</a>.</p>
+    </article>
+  </section>
+</Base>

@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="Privacy Policy" description="How Brightview Agency collects, uses and protects your information, including mobile numbers and SMS consent.">
+  <div class="page-head"><h1>Privacy Policy</h1><p>Last updated: October 26, 2026</p></div>
+  <section style="padding-top:1rem">
+    <article class="prose">
+      <p>This policy explains how {SITE.name} (“Brightview”, “we”, “us”) handles information collected through this website, our phone line and our text messages.</p>
+
+      <h2>Information we collect</h2>
+      <ul>
+        <li><strong>Information you give us:</strong> your name, business name, email address, phone number, industry and anything you write in our forms or tell us by phone, text or email.</li>
+        <li><strong>Calls and messages:</strong> when you call or text our line, our AI assistant (Neo) processes the conversation to answer you, and keeps a record of it to follow up.</li>
+        <li><strong>Basic website data:</strong> standard technical information such as browser type and pages visited, used to keep the site working.</li>
+      </ul>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>To respond to your request, schedule a consultation and follow up about it.</li>
+        <li>To provide and improve our services.</li>
+        <li>To send text messages you have agreed to receive (see below).</li>
+        <li>To meet legal obligations.</li>
+      </ul>
+
+      <h2>Text messages and mobile numbers</h2>
+      <p>If you opt in, we send text messages about your request or appointment. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time, or <strong>HELP</strong> for help. See our <a href="/sms-terms">SMS Terms</a>.</p>
+      <p><strong>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</strong> All other categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</p>
+
+      <h2>Sharing</h2>
+      <p>We do not sell your personal information. We share it only with service providers that help us operate (for example, our phone and texting provider, email provider and hosting), under obligations to protect it, or when required by law.</p>
+
+      <h2>Retention and security</h2>
+      <p>We keep information only as long as needed for the purposes above or as required by law, and protect it with reasonable administrative, technical and physical safeguards.</p>
+
+      <h2>Your choices</h2>
+      <p>You can ask us to access, correct or delete your information, or opt out of messages, by contacting us below.</p>
+
+      <h2>Our clients’ customers</h2>
+      <p>When we install Neo for a business, that business decides how its customers’ information is used, under its own privacy policy. Each client’s data is kept in its own private install and is never shared with other clients.</p>
+
+      <h2>Contact</h2>
+      <p>Call or text <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>, or use our <a href="/book">contact form</a>.</p>
+    </article>
+  </section>
+</Base>

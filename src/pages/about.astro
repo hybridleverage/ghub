@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../consts';
+---
+<Base title="About" description="Brightview Agency was founded by Rudy Baptiste, who built Neo to run his own medical courier company before offering it to other small businesses.">
+  <div class="page-head">
+    <div class="badge"><span class="dot"></span>About</div>
+    <h1>Built by an owner, for owners</h1>
+  </div>
+  <section style="padding-top:1rem">
+    <article class="prose">
+      <p>Brightview Agency was founded by <strong>Rudy Baptiste</strong>, who also owns <strong>RGT Drivers</strong>, a courier and medical delivery company in Silver Spring, Maryland.</p>
+      <p>Running RGT meant answering phones between deliveries, dispatching rush jobs at night and building payroll at the end of every week. Neo started as the assistant Rudy built to take that work off his plate. It now answers RGT’s calls, follows up its leads and runs much of its back office.</p>
+      <p>Brightview exists to give other small businesses the same help: AI staff that works around the clock, set up and run for you, and that always asks before doing anything that matters.</p>
+      <h2>What we believe</h2>
+      <ul>
+        <li><strong>The owner stays in control.</strong> Neo drafts, you approve.</li>
+        <li><strong>Prove it first.</strong> Every module runs at RGT before we sell it.</li>
+        <li><strong>Your data is yours.</strong> Every client gets a private install.</li>
+        <li><strong>Show the value.</strong> You should always know what Neo did for you.</li>
+      </ul>
+      <h2>Contact</h2>
+      <p>Call or text Neo at <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>, or <a href="/book">book a consultation</a>. We serve {SITE.serviceArea}.</p>
+    </article>
+  </section>
+</Base>

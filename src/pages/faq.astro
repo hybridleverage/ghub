@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+const faqs: [string, string][] = [
+  ['Is Neo a robot voice? Can callers tell?', 'Neo speaks in a natural voice and introduces itself as a virtual receptionist. It keeps answers short and hands the call to you whenever a caller asks for a person.'],
+  ['What happens when Neo doesn’t know an answer?', 'It takes a message and alerts you on Telegram right away, or transfers the call to you, depending on how you want it set up.'],
+  ['Can Neo post, send or spend anything without me?', 'Not anything public, costly or in bulk. Approval mode sends you a Telegram message with Approve and Reject buttons, and nothing goes out until you tap. Requests expire after 24 hours if nobody decides.'],
+  ['Do I need Telegram?', 'Telegram is how you see what Neo is doing and approve things, from any phone or computer. It’s free, and we set it up with you.'],
+  ['Do I keep my phone number?', 'Yes. You can forward your existing number to Neo, have it pick up only the calls you miss, or give Neo its own number.'],
+  ['Why does texting take time to switch on?', 'US carriers require businesses to register before sending texts (called A2P 10DLC). We file it for you; approval usually takes from a few days to a few weeks. Calls work from day one.'],
+  ['Is my data shared with other businesses?', 'No. Each client gets a private install: its own server, phone number and database.'],
+  ['How is patient privacy handled for medical clients?', 'Texts carry times and order numbers only. No patient details ever go by text.'],
+  ['Does Neo give legal advice for law firms?', 'Never. It collects facts and conflict-check names, books consultations and takes messages. It tells every caller it isn’t an attorney.'],
+  ['How long does setup take?', 'Most installs go live in two to three weeks. Texting switches on once the carriers approve your registration.'],
+  ['How is it priced?', 'A monthly plan plus a one-time, done-for-you setup. We quote after a 30-minute consultation so the plan fits your call volume and tools.'],
+  ['What do I need to provide?', 'Your price list or rate sheet, common questions and policies, and access to the tools you want Neo to use. We turn them into Neo’s knowledge base.'],
+];
+const schema = { '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<Base title="FAQ" description="Answers about Neo: how it sounds, approvals, Telegram, keeping your number, texting registration, privacy, setup time and pricing." schema={schema}>
+  <div class="page-head">
+    <div class="badge"><span class="dot"></span>FAQ</div>
+    <h1>Questions owners ask us</h1>
+  </div>
+  <section style="padding-top:1rem">
+    <div class="container narrow faq">
+      {faqs.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+      <p style="margin-top:1.5rem">Something else? <a href="/book">Book a consultation</a> and ask us directly.</p>
+    </div>
+  </section>
+</Base>

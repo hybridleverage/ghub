@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+const list = [
+  { id: 'courier', icon: 'truck', name: 'Courier and medical delivery', live: true, href: '/industries/courier',
+    text: 'Dispatch from plain English, late-delivery alerts, proof of delivery, routes and payroll, plus the front desk.',
+    rule: 'No patient details in texts.' },
+  { id: 'law', icon: 'scale', name: 'Law firms', live: false, href: '/industries/law',
+    text: 'A receptionist that does intake and conflict-check names, books consultations on your calendar and flags urgent matters.',
+    rule: 'Never gives legal advice; facts and conflict-check names only.' },
+  { id: 'home-services', icon: 'home', name: 'Home services (HVAC, plumbing, cleaning)', live: false, href: '/book?industry=Home%20services',
+    text: 'Missed-call text-back, quotes and payment links, booking, and reactivation of past customers.',
+    rule: 'Emergency calls go straight to the on-call tech.' },
+  { id: 'salons', icon: 'scissors', name: 'Salons and barbers', live: false, href: '/book?industry=Salon',
+    text: 'Booking and reminders, the review engine and a content calendar.',
+    rule: 'Deposits by payment link to cut no-shows.' },
+  { id: 'clinics', icon: 'heart', name: 'Clinics and wellness', live: false, href: '/book?industry=Clinic',
+    text: 'Booking, reminders, intake forms and Spanish.',
+    rule: 'No medical advice; health details kept out of texts and email.' },
+];
+---
+<Base title="Industries" description="Neo comes with ready-made templates for courier and delivery (live), law firms, home services, salons and clinics (early access).">
+  <div class="page-head">
+    <div class="badge"><span class="dot"></span>Industries</div>
+    <h1>A template for your trade, so setup takes hours, not weeks</h1>
+    <p>Each template sets Neo’s call script, intake questions, message wording and the safety rules your industry needs.</p>
+  </div>
+  <section style="padding-top:1rem">
+    <div class="container" style="display:flex;flex-direction:column;gap:1.2rem">
+      {list.map((i) => (
+        <div class="card ind-row" id={i.id}>
+          <div class="icon-tile" style="margin:0"><Icon name={i.icon} /></div>
+          <div>
+            <h3>{i.name}<span class={`tag ${i.live ? 'live' : 'soon'}`}>{i.live ? 'Live' : 'Early access'}</span></h3>
+            <p>{i.text}</p>
+            <p style="margin-top:.4rem"><strong style="color:var(--bright)">Guardrail:</strong> {i.rule}</p>
+          </div>
+          <a class="btn-secondary" href={i.href}>{i.live ? 'See how' : (i.id === 'law' ? 'Learn more' : 'Join early access')}</a>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>
