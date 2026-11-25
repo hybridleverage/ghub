@@ -6,6 +6,8 @@ export const SITE = {
   // Brightview's own line, answered by Neo (live demo).
   phone: '(240) 339-8478',
   phoneTel: '+12403398478',
+  // Consultation booking (Calendly, connected to brightviewagencyllc@gmail.com).
+  calendlyUrl: 'https://calendly.com/brightviewagency',
   // Consultation requests (Formspree today; switch to Neo's lead endpoint later).
   formAction: 'https://formspree.io/f/xyzwvqpk',
   serviceArea: 'Maryland, DC and Virginia, with remote setup nationwide',

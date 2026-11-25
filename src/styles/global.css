@@ -195,6 +195,10 @@ a.card:hover, .card.hover:hover { border-color: rgba(0,212,255,0.45); transform:
 /* FORM */
 .book-wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; }
 @media (max-width: 860px) { .book-wrap { grid-template-columns: 1fr; gap: 2rem; } }
+/* Calendly booking */
+.calendly-box { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.reach-out { margin-top: 1.5rem; }
+.reach-out summary { cursor: pointer; font-weight: 600; color: var(--cyan); }
 form.lead-form { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1.8rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }

@@ -13,7 +13,7 @@ import { SITE } from '../consts';
       <div>
         <h2 class="section-title" style="font-size:1.6rem">What happens next</h2>
         <ul class="checks" style="margin-bottom:2rem">
-          <li><strong>We get your request right away</strong> and reach out to set a time for a free 30-minute consultation.</li>
+          <li><strong>Pick a time that suits you</strong> for a free consultation on Zoom with Rudy. You get a confirmation and calendar invite right away.</li>
           <li><strong>We map your calls, leads and paperwork</strong> and show you which Neo modules fit.</li>
           <li><strong>You get a clear quote.</strong> No pressure, no obligation.</li>
         </ul>
@@ -23,46 +23,57 @@ import { SITE } from '../consts';
           <p>Call or text Neo at <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a>. It answers day or night, and it’s the best demo of what your customers would get.</p>
         </div>
       </div>
-      <form class="lead-form" action={SITE.formAction} method="POST">
-        <input type="hidden" name="_subject" value="New Brightview consultation request" />
-        <input type="hidden" name="_next" value={SITE.url + '/thanks'} />
-        <input type="hidden" name="plan" id="plan-field" value="" />
-        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-row">
-          <div class="form-group"><label for="name">Full name</label><input id="name" name="name" required autocomplete="name" /></div>
-          <div class="form-group"><label for="company">Business name</label><input id="company" name="company" autocomplete="organization" /></div>
+      <div>
+        <div class="calendly-box">
+          <div class="calendly-inline-widget" data-url={`${SITE.calendlyUrl}?hide_gdpr_banner=1&background_color=0d1e36&text_color=f0faff&primary_color=00d4ff`} style="min-width:300px;height:720px;"></div>
+          <noscript><p style="padding:1.5rem">Book online at <a href={SITE.calendlyUrl}>{SITE.calendlyUrl.replace('https://','')}</a>.</p></noscript>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label for="email">Email</label><input id="email" type="email" name="email" required autocomplete="email" /></div>
-          <div class="form-group"><label for="phone">Mobile phone</label><input id="phone" type="tel" name="phone" autocomplete="tel" /></div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="industry">Industry</label>
-            <select id="industry" name="industry">
-              <option value="">Choose one</option>
-              <option>Courier</option><option>Law firm</option><option>Home services</option>
-              <option>Salon</option><option>Clinic</option><option>Other</option>
-            </select>
+        <p class="form-note" style="margin-top:.75rem">Calendar not loading? <a href={SITE.calendlyUrl} target="_blank" rel="noopener">Open the booking page</a>.</p>
+        <details class="reach-out">
+          <summary>None of the times work? Ask us to reach out instead</summary>
+        <form class="lead-form" style="margin-top:1rem" action={SITE.formAction} method="POST">
+          <input type="hidden" name="_subject" value="New Brightview consultation request" />
+          <input type="hidden" name="_next" value={SITE.url + '/thanks'} />
+          <input type="hidden" name="plan" id="plan-field" value="" />
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <div class="form-row">
+            <div class="form-group"><label for="name">Full name</label><input id="name" name="name" required autocomplete="name" /></div>
+            <div class="form-group"><label for="company">Business name</label><input id="company" name="company" autocomplete="organization" /></div>
           </div>
-          <div class="form-group">
-            <label for="calls">Calls per week (roughly)</label>
-            <select id="calls" name="call_volume">
-              <option value="">Not sure</option><option>Under 25</option><option>25 to 100</option><option>100 to 300</option><option>Over 300</option>
-            </select>
+          <div class="form-row">
+            <div class="form-group"><label for="email">Email</label><input id="email" type="email" name="email" required autocomplete="email" /></div>
+            <div class="form-group"><label for="phone">Mobile phone</label><input id="phone" type="tel" name="phone" autocomplete="tel" /></div>
           </div>
-        </div>
-        <div class="form-group"><label for="challenge">What eats most of your time right now?</label>
-          <textarea id="challenge" name="challenge" placeholder="Missed calls, chasing leads, dispatching, scheduling, paperwork…"></textarea></div>
-        <label class="consent">
-          <input type="checkbox" name="sms_consent" value="yes" />
-          <span>Text me about this request. I agree to receive SMS messages from {SITE.name} at the number above about my consultation. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of service. See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy">Privacy Policy</a>.</span>
-        </label>
-        <button type="submit" class="btn-primary form-submit">Request my consultation</button>
-        <p class="form-note">We never share your information. No spam.</p>
-      </form>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="industry">Industry</label>
+              <select id="industry" name="industry">
+                <option value="">Choose one</option>
+                <option>Courier</option><option>Law firm</option><option>Home services</option>
+                <option>Salon</option><option>Clinic</option><option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="calls">Calls per week (roughly)</label>
+              <select id="calls" name="call_volume">
+                <option value="">Not sure</option><option>Under 25</option><option>25 to 100</option><option>100 to 300</option><option>Over 300</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label for="challenge">What eats most of your time right now?</label>
+            <textarea id="challenge" name="challenge" placeholder="Missed calls, chasing leads, dispatching, scheduling, paperwork…"></textarea></div>
+          <label class="consent">
+            <input type="checkbox" name="sms_consent" value="yes" />
+            <span>Text me about this request. I agree to receive SMS messages from {SITE.name} at the number above about my consultation. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of service. See our <a href="/sms-terms">SMS Terms</a> and <a href="/privacy">Privacy Policy</a>.</span>
+          </label>
+          <button type="submit" class="btn-primary form-submit">Ask us to reach out</button>
+          <p class="form-note">We never share your information. No spam.</p>
+        </form>
+        </details>
+      </div>
     </div>
   </section>
+  <script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
   <script is:inline>
     (function () {
       var q = new URLSearchParams(location.search);
